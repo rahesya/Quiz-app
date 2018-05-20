@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "960478398820",
+    "firebase_url": "https://aqfirebaseproject.firebaseio.com",
+    "project_id": "aqfirebaseproject",
+    "storage_bucket": "aqfirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960478398820:android:0c369dc292b21392",
+        "android_client_info": {
+          "package_name": "com.acadview.www.aq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960478398820-o70ls7957u9f4chr688c8ofisk45oonk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acadview.www.aq",
+            "certificate_hash": "75ef330a01be4926355fe4d4ed309ca1d30c113c"
+          }
+        },
+        {
+          "client_id": "960478398820-jebm97ivgi5nnhoqf0m552sfnui8md4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0GYBNO_sYvHBxKBevuBDUeUBzilpDtJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960478398820-jebm97ivgi5nnhoqf0m552sfnui8md4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

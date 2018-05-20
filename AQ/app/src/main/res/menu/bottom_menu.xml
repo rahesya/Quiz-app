@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_category"
+        tools:ignore="MenuTitle"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/category_icon">
+
+    </item>
+
+    <item
+        android:id="@+id/action_Ranking"
+        tools:ignore="MenuTitle"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ranking_icon">
+
+    </item>
+
+</menu>
