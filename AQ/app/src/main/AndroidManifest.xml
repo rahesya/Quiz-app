@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Catalog" />
-        <activity android:name=".MyProfile"></activity>
+        <activity android:name=".MyProfile" />
+        <activity android:name=".QuizStart" />
+        <activity android:name=".Playing"></activity>
     </application>
 
 </manifest>

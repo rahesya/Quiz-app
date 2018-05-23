@@ -37,6 +37,7 @@ public class CategoryFragment extends Fragment {
        myFragment =inflater.inflate(R.layout.fragment_category,container,false);
 
         listCategory = (RecyclerView)myFragment.findViewById(R.id.categorylist);
+        listCategory.setNestedScrollingEnabled(true);
         ItemData itemdatas[]= {new ItemData("Java",R.drawable.javao1)
                 ,new ItemData("Python",R.drawable.python)
                 ,new ItemData("ML",R.drawable.machinelearning)
@@ -50,4 +51,6 @@ public class CategoryFragment extends Fragment {
 
         return myFragment ;
     }
+
+
 }
