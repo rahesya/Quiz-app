@@ -1,7 +1,22 @@
 package com.acadview.www.aq;
 
 public class Question {
-    private String Question,AnswerA,AnswerB,AnswerC,AnswerD,CorrectAnswer,categoryId,isImageQuestion;
+    private String Question,AnswerA,AnswerB,AnswerC,AnswerD,CorrectAnswer,CategoryId,IsImageQuestion;
+
+    public Question(){
+
+    }
+
+    public Question(String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, String categoryId, String isImageQuestion) {
+        Question = question;
+        AnswerA = answerA;
+        AnswerB = answerB;
+        AnswerC = answerC;
+        AnswerD = answerD;
+        CorrectAnswer = correctAnswer;
+        CategoryId = categoryId;
+        IsImageQuestion = isImageQuestion;
+    }
 
     public String getQuestion() {
         return Question;
@@ -52,30 +67,18 @@ public class Question {
     }
 
     public String getCategoryId() {
-        return categoryId;
+        return CategoryId;
     }
 
     public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+        CategoryId = categoryId;
     }
 
     public String getIsImageQuestion() {
-        return isImageQuestion;
+        return IsImageQuestion;
     }
 
     public void setIsImageQuestion(String isImageQuestion) {
-        this.isImageQuestion = isImageQuestion;
+        IsImageQuestion = isImageQuestion;
     }
-
-    public Question(String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, String categoryId, String isImageQuestion) {
-        Question = question;
-        AnswerA = answerA;
-        AnswerB = answerB;
-        AnswerC = answerC;
-        AnswerD = answerD;
-        CorrectAnswer = correctAnswer;
-        this.categoryId = categoryId;
-        this.isImageQuestion = isImageQuestion;
-    }
-
 }

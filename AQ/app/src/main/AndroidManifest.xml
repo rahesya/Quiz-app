@@ -23,7 +23,8 @@
         <activity android:name=".Catalog" />
         <activity android:name=".MyProfile" />
         <activity android:name=".QuizStart" />
-        <activity android:name=".Playing"></activity>
+        <activity android:name=".Playing" />
+        <activity android:name=".Done"></activity>
     </application>
 
 </manifest>

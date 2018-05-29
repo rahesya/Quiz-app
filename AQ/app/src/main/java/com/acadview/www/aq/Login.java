@@ -179,6 +179,8 @@ public class Login extends AppCompatActivity {
                                     edit.apply();
 
                                     Intent intent = new Intent(Login.this, Catalog.class);
+
+                                    Common.currentuser =login;
                                     startActivity(intent);
                                 } else {
                                     findViewById(R.id.pbar).setVisibility(View.INVISIBLE);

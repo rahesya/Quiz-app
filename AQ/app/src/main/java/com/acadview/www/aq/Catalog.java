@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 public class Catalog extends AppCompatActivity {
 
-    RecyclerView recyclerView;
     int backcounter=0;
     BottomNavigationView bottomNavigationView;
 
@@ -49,6 +48,7 @@ public class Catalog extends AppCompatActivity {
         });
 
         setDefaultFragment();
+
     }
 
     private void setDefaultFragment(){
