@@ -1,49 +1,37 @@
 package com.acadview.www.aq;
 
-import android.app.Dialog;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
-
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
+
+
 
 public class Login extends AppCompatActivity {
 
@@ -101,6 +89,9 @@ public class Login extends AppCompatActivity {
 
     public void onforgotTap(View v) {
 
+        if (Ephone.getText().toString().length() != 10) {
+            Toast.makeText(Login.this, "Phone", Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -121,6 +112,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_login);
+
+        registerAlarm();
 
         View progress_loop = (ProgressBar) findViewById(R.id.pbar);
         progress_loop.bringToFront();
@@ -184,7 +177,7 @@ public class Login extends AppCompatActivity {
                                     startActivity(intent);
                                 } else {
                                     findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                                    Toast.makeText(Login.this, "either username or password is wrong", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this, "Username or password is wrong", Toast.LENGTH_LONG).show();
                                 }
                             } else {
                                 findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
@@ -267,6 +260,18 @@ public class Login extends AppCompatActivity {
                 mCallbacks,
                 mResendToken);
 
+    }
+
+    private void registerAlarm(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,8);
+        calendar.set(Calendar.MINUTE,14 );
+        calendar.set(Calendar.SECOND,0);
+
+        Intent intent = new Intent(Login.this,AlarmReciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(Login.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager am = (AlarmManager)this.getSystemService(this.ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
     }
 
     private boolean showPopup() {

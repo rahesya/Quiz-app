@@ -17,7 +17,6 @@ import android.widget.Toast;
 public class CategoryFragment extends Fragment{
 
     View myFragment;
-    RecyclerView.SmoothScroller scroller;
     RecyclerView listCategory ;
     RecyclerView.LayoutManager layoutManager;
 
@@ -38,7 +37,6 @@ public class CategoryFragment extends Fragment{
        myFragment =inflater.inflate(R.layout.fragment_category,container,false);
 
         listCategory = (RecyclerView)myFragment.findViewById(R.id.categorylist);
-
         ItemData itemdatas[]= {new ItemData("Java",R.drawable.javao1)
                 ,new ItemData("Python",R.drawable.python)
                 ,new ItemData("ML",R.drawable.machinelearning)
@@ -47,7 +45,10 @@ public class CategoryFragment extends Fragment{
 
         listCategory.setLayoutManager(new GridLayoutManager(getContext(),2));
         MyAdapter myAdapter =new MyAdapter(itemdatas);
+        listCategory.setNestedScrollingEnabled(true);
         listCategory.setAdapter(myAdapter);
+        listCategory.setHasFixedSize(true);
+        listCategory.setItemAnimator(new DefaultItemAnimator());
 
         listCategory.setItemAnimator(new DefaultItemAnimator());
 

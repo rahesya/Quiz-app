@@ -45,7 +45,7 @@ public class QuizStart extends AppCompatActivity {
     }
 
     private void loadQuestion(String categoryId) {
-        //First,clear list if have old question
+
         if(Common.questionList.size()>0){
             Common.questionList.clear();
         }

@@ -2,41 +2,62 @@ package com.acadview.www.aq;
 
 public class QuestionScore {
 
-    private String Question_Score;
-    private String User;
-    private String Score;
+    private String question_Category;
+    private String user;
+    private String score;
+    private String categoryId;
+    private String categoryName;
 
-    public QuestionScore(){
+    QuestionScore(){
 
     }
 
-    public QuestionScore(String question_Score, String user, String score) {
-        Question_Score = question_Score;
-        User = user;
-        Score = score;
+    public QuestionScore(String question_Category, String user, String score, String categoryId, String categoryName) {
+        this.question_Category = question_Category;
+        this.user = user;
+        this.score = score;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
-    public String getQuestion_Score() {
-        return Question_Score;
+    public String getQuestion_Category() {
+        return question_Category;
     }
 
-    public void setQuestion_Score(String question_Score) {
-        Question_Score = question_Score;
+    public void setQuestion_Category(String question_Category) {
+        this.question_Category = question_Category;
     }
 
     public String getUser() {
-        return User;
+        return user;
     }
 
     public void setUser(String user) {
-        User = user;
+        this.user = user;
     }
 
     public String getScore() {
-        return Score;
+        return score;
     }
 
     public void setScore(String score) {
-        Score = score;
+        this.score = score;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
+
