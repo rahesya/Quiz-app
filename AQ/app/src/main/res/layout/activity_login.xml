@@ -45,7 +45,7 @@
     <ImageView
         android:id="@+id/useric"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/passwordic"
         android:layout_marginBottom="8dp"
@@ -60,7 +60,7 @@
     <ImageView
         android:id="@+id/passwordic"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/passwordet"
         android:layout_marginBottom="8dp"
@@ -78,7 +78,7 @@
     <ImageView
         android:id="@+id/phoneic"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_height="25dp"
         android:layout_alignStart="@+id/useric"
         android:layout_alignTop="@+id/phoneet"
         android:layout_marginBottom="8dp"
@@ -96,7 +96,7 @@
     <EditText
         android:id="@+id/usernameet"
         android:layout_width="297dp"
-        android:layout_height="38dp"
+        android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/useric"
         android:layout_marginEnd="8dp"
@@ -119,7 +119,7 @@
     <EditText
         android:id="@+id/passwordet"
         android:layout_width="297dp"
-        android:layout_height="38dp"
+        android:layout_height="25dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/usernameet"
         android:layout_marginBottom="8dp"
@@ -142,10 +142,52 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameet"
         app:layout_constraintVertical_bias="0.024" />
 
+    <!--<EditText-->
+        <!--android:id="@+id/emailet"-->
+        <!--android:background="@drawable/round"-->
+        <!--android:bottomLeftRadius="10dp"-->
+        <!--android:bottomRightRadius="10dp"-->
+        <!--android:ems="10"-->
+        <!--android:hint="      Email"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:textStyle="bold"-->
+        <!--android:topLeftRadius="10dp"-->
+        <!--android:topRightRadius="10dp"-->
+        <!--android:layout_width="297dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/SignInbt"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.887"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/phoneet"-->
+        <!--app:layout_constraintVertical_bias="0.153" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/emailic"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignStart="@+id/useric"-->
+        <!--android:layout_alignTop="@+id/phoneet"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/emailet"-->
+        <!--app:layout_constraintHorizontal_bias="0.421"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/phoneic"-->
+        <!--app:layout_constraintVertical_bias="0.021"-->
+        <!--app:srcCompat="@drawable/email" />-->
+
     <EditText
         android:id="@+id/phoneet"
         android:layout_width="297dp"
-        android:layout_height="38dp"
+        android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/usernameet"
         android:layout_marginBottom="8dp"
@@ -185,10 +227,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/forgottv"
-        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneet"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.19"
         tools:ignore="SmallSp" />
 
     <TextView
@@ -199,19 +241,19 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:textSize="10sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/days_one"
-        android:text=" Username/Password?"
+        android:text="Password?"
         android:textColor="@color/colorBackground"
+        android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneet"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.19"
         tools:ignore="SmallSp" />
 
     <Button
@@ -255,7 +297,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignInbt"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.014" />
 
     <TextView
         android:id="@+id/signuptv"
@@ -269,15 +311,16 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/days_one"
         android:onClick="onsignupTap"
-        android:text="SIGN UP NOW"
+        android:text="SIGN UP"
         android:textColor="@color/colorBackground"
-        android:textSize="22sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.117" />
+
 
 </android.support.constraint.ConstraintLayout>

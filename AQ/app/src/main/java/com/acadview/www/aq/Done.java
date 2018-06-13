@@ -26,7 +26,7 @@ public class Done extends AppCompatActivity {
         setContentView(R.layout.activity_done);
 
         database =FirebaseDatabase.getInstance();
-        question_score = database.getReference("Question_Score ");
+        question_score = database.getReference("Question_Score/"+Common.currentuser.getUsername());
 
         txtResultScore = (TextView)findViewById(R.id.txtTotalQuestion);
         progressBar = (ProgressBar)findViewById(R.id.doneProgressBar);
@@ -48,14 +48,15 @@ public class Done extends AppCompatActivity {
             int totalQuestion = extra.getInt("Total");
             int correctAnswer = extra.getInt("Correct");
 
-            txtResultScore.setText(String .format("Score : %d",score));
+            txtResultScore.setText(String .format("Score : %s",String.valueOf(score)));
             gettxtResultQuestion.setText(String.format("Passed : %d/%d",correctAnswer,totalQuestion));
 
             progressBar.setMax(totalQuestion);
             progressBar.setProgress(correctAnswer);
 
-            question_score.child(String.format("%s_%s",Common.currentuser.getUsername(),Common.categoryId))
-                    .setValue(new QuestionScore(String.format("%s_%s",Common.currentuser.getUsername(),Common.categoryId),Common.currentuser.getUsername(),String.valueOf(score),Common.categoryId,Common.categoryName));
+            QuestionScore questionScore = new QuestionScore(Common.categoryName,Common.categoryId,Common.currentuser.getUsername(),String.valueOf(score),Common.categoryName);
+
+            question_score.child(Common.categoryName).setValue(questionScore);
         }
     }
 }

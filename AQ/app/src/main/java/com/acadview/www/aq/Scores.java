@@ -8,6 +8,11 @@ public class Scores {
 
     }
 
+    public Scores(String categoryName, int score) {
+        CategoryName = categoryName;
+        Score = score;
+    }
+
     public String getCategoryName() {
         return CategoryName;
     }
@@ -21,11 +26,6 @@ public class Scores {
     }
 
     public void setScore(int score) {
-        Score = score;
-    }
-
-    public Scores(String categoryName, int score) {
-        CategoryName = categoryName;
         Score = score;
     }
 

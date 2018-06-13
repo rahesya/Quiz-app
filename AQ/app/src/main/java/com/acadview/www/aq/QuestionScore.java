@@ -3,22 +3,23 @@ package com.acadview.www.aq;
 public class QuestionScore {
 
     private String question_Category;
+    private String categoryId;
     private String user;
     private String score;
-    private String categoryId;
     private String categoryName;
+
+    public QuestionScore(String question_Category, String categoryId, String user, String score, String categoryName) {
+        this.question_Category = question_Category;
+        this.categoryId = categoryId;
+        this.user = user;
+        this.score = score;
+        this.categoryName = categoryName;
+    }
 
     QuestionScore(){
 
     }
 
-    public QuestionScore(String question_Category, String user, String score, String categoryId, String categoryName) {
-        this.question_Category = question_Category;
-        this.user = user;
-        this.score = score;
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-    }
 
     public String getQuestion_Category() {
         return question_Category;

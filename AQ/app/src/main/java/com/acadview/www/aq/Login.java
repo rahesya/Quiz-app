@@ -67,14 +67,14 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        if (dataSnapshot.child(user.getUsername()).exists()) {
-                            findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                            Toast.makeText(Login.this, "username taken", Toast.LENGTH_LONG).show();
-                        } else {
-                            startPhoneNumberVerification(Ephone.getText().toString());
-                            findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                            showPopup();
-                        }
+                    if (dataSnapshot.child(user.getUsername()).exists()) {
+                        findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                        Toast.makeText(Login.this, "username taken", Toast.LENGTH_LONG).show();
+                    } else {
+                        startPhoneNumberVerification("+91"+Ephone.getText().toString());
+                        findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                        showPopup();
+                    }
 
 
                 }
@@ -89,9 +89,9 @@ public class Login extends AppCompatActivity {
 
     public void onforgotTap(View v) {
 
-        if (Ephone.getText().toString().length() != 10) {
-            Toast.makeText(Login.this, "Phone", Toast.LENGTH_LONG).show();
-        }
+//        if (Ephone.getText().toString().length() != 10) {
+//            Toast.makeText(Login.this, "Phone", Toast.LENGTH_LONG).show();
+//        }
 
     }
 

@@ -6,23 +6,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import java.util.List;
 
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingViewHolder> {
 
+
     List<Ranking> Ranklist;
 
-    public RankingAdapter(List<Ranking> List){
+    public RankingAdapter(List<Ranking> List) {
         this.Ranklist = List;
     }
 
     @NonNull
     @Override
     public RankingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ranking_layout,parent,false);
-        RankingViewHolder vh =new RankingViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ranking_layout, parent, false);
+        RankingViewHolder vh = new RankingViewHolder(view);
         return vh;
     }
 
@@ -40,9 +42,11 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         return Ranklist.size();
     }
 
-    public static class RankingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public class RankingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_name, txt_Score;
+
 
         public RankingViewHolder(View itemView) {
             super(itemView);
@@ -56,15 +60,14 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
         @Override
         public void onClick(View v) {
-            if(v.getId()==txt_name.getId()){
-                 Intent scoredetailintent = new Intent(v.getContext(),ScoreDetails.class);
-                 scoredetailintent.putExtra("viewUser",txt_name.getText().toString());
-                 v.getContext().startActivity(scoredetailintent);
-
-                }
+            if (v.getId() == txt_name.getId()) {
+                Intent scoredetailintent = new Intent(v.getContext(), ScoreDetails.class);
+                scoredetailintent.putExtra("viewUser", txt_name.getText().toString());
+                v.getContext().startActivity(scoredetailintent);
 
             }
 
         }
 
     }
+}

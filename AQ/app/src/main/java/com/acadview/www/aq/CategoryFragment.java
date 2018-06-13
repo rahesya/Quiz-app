@@ -45,11 +45,7 @@ public class CategoryFragment extends Fragment{
 
         listCategory.setLayoutManager(new GridLayoutManager(getContext(),2));
         MyAdapter myAdapter =new MyAdapter(itemdatas);
-        listCategory.setNestedScrollingEnabled(true);
         listCategory.setAdapter(myAdapter);
-        listCategory.setHasFixedSize(true);
-        listCategory.setItemAnimator(new DefaultItemAnimator());
-
         listCategory.setItemAnimator(new DefaultItemAnimator());
 
         return myFragment ;

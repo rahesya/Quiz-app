@@ -29,7 +29,7 @@ public class ScoreDetailAdapter extends RecyclerView.Adapter<ScoreDetailAdapter.
     public void onBindViewHolder(@NonNull ScoreDetailViewHolder holder, int position) {
 
         Scores data = Scorelist.get(position);
-        holder.txt_score.setText(data.getScore());
+        holder.txt_score.setText(String.valueOf(data.getScore()));
         holder.txt_categoryname.setText(data.getCategoryName());
 
     }

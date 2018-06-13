@@ -3,6 +3,7 @@ package com.acadview.www.aq;
 public class Ranking {
     private String userName;
     private int score;
+
     public Ranking(){
 
     }
