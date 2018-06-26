@@ -1,11 +1,13 @@
 package com.acadview.www.aq;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -89,6 +91,10 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(Playing.this,"This is the first question",Toast.LENGTH_LONG).show();
                 }
                 else {
+                    btnB.setTextColor(Color.WHITE);
+                    btnA.setTextColor(Color.WHITE);
+                    btnC.setTextColor(Color.WHITE);
+                    btnD.setTextColor(Color.WHITE);
                         for(int counter=index-1;counter>=0;counter--) {
                             if (!questionattempted[counter]){
                                 index=counter;
@@ -107,6 +113,10 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(Playing.this,"This is the Last question",Toast.LENGTH_LONG).show();
                 }
                 else{
+                    btnB.setTextColor(Color.WHITE);
+                    btnA.setTextColor(Color.WHITE);
+                    btnC.setTextColor(Color.WHITE);
+                    btnD.setTextColor(Color.WHITE);
                      for(int counter=index+1;counter<totalQuestion;counter++){
                          if(!questionattempted[counter]){
                              index=counter;
@@ -270,14 +280,31 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this,Done.class);
-            Bundle dataSend = new Bundle();
-            dataSend.putInt("Score",score);
-            dataSend.putInt("Total",totalQuestion);
-            dataSend.putInt("Correct",correctAnswer);
-            intent.putExtras(dataSend);
-            startActivity(intent);
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(Playing.this);
+            builder.setTitle("Are you sure");
+            builder.setMessage("You are done with the quiz");
+            builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Intent intent = new Intent(Playing.this,Done.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("Score",score);
+                    dataSend.putInt("Total",totalQuestion);
+                    dataSend.putInt("Correct",correctAnswer);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
             return true;
         }
 

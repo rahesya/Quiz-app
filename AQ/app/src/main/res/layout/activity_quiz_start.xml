@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,90 +7,143 @@
     android:background="@color/colorDark"
     tools:context=".QuizStart">
 
-    <ImageView
-        android:id="@+id/quiz_image"
-        android:layout_width="213dp"
-        android:layout_height="74dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_android_icon"/>
-
-    <Button
-        android:id="@+id/easy"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:backgroundTint="@color/colorBackground"
-        android:text="Easy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_image"
-        app:layout_constraintVertical_bias="0.468" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/normal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:backgroundTint="@color/colorBackground"
-        android:text="Normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_image"
-        app:layout_constraintVertical_bias="0.63" />
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round"
+            android:padding="5dp"
+            app:cardBackgroundColor="@color/closetoblack"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
 
-    <Button
-        android:id="@+id/hard"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:backgroundTint="@color/colorBackground"
-        android:text="Hard"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_image"
-        app:layout_constraintVertical_bias="0.786" />
+            <Button
+                android:id="@+id/easy"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="428dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/round"
+                android:backgroundTint="@color/colorBackground"
+                android:text="Easy" />
 
-    <Button
-        android:id="@+id/challenging"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:backgroundTint="@color/colorBackground"
-        android:text="Challenging"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_image"
-        app:layout_constraintVertical_bias="0.942" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_easy"
+                android:layout_marginStart="10dp"
+                />
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round"
+            android:padding="5dp"
+            app:cardBackgroundColor="@color/closetoblack"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
 
-</android.support.constraint.ConstraintLayout>
+            <Button
+                android:id="@+id/normal"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="428dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/round"
+                android:backgroundTint="@color/colorBackground"
+                android:text="Normal"
+                tools:layout_editor_absoluteX="204dp"
+                tools:layout_editor_absoluteY="231dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_normal"
+                android:layout_marginStart="10dp"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round"
+            android:padding="5dp"
+            app:cardBackgroundColor="@color/closetoblack"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <Button
+                android:id="@+id/hard"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="428dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/round"
+                android:backgroundTint="@color/colorBackground"
+                android:text="Hard" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_hard"
+                android:layout_marginStart="10dp"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round"
+            android:padding="5dp"
+            app:cardBackgroundColor="@color/closetoblack"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <Button
+                android:id="@+id/challenging"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="428dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/round"
+                android:backgroundTint="@color/colorBackground"
+                android:text="Challenging"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_challenge"
+                android:layout_marginStart="10dp"/>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
