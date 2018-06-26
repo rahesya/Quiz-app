@@ -3,14 +3,24 @@ package com.acadview.www.aq;
 public class Ranking {
     private String userName;
     private int score;
+    private String profilepic;
 
     public Ranking(){
 
     }
 
-    public Ranking(String userName, int score) {
+    public Ranking(String userName, int score,String profilepic) {
         this.userName = userName;
         this.score = score;
+        this.profilepic=profilepic;
+    }
+
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
     }
 
     public String getUserName() {

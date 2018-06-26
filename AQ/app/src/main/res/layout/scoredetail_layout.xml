@@ -4,7 +4,10 @@
     android:layout_height="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
+    android:background="@drawable/round"
+    app:cardCornerRadius="7dp"
     android:id="@+id/ranking_view"
+    app:cardBackgroundColor="@color/closetoblack"
     android:layout_margin="8dp"
     app:cardElevation="4dp">
 
@@ -22,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="8"
             android:text="Category Name"
-            android:textColor="@color/colorDark"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
@@ -32,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/Score"
-            android:textColor="@color/colorDark"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
     </LinearLayout>

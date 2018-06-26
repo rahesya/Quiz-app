@@ -44,13 +44,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 Common.categoryName="Python";
             }
             else if(Common.categoryId.equals("03")){
-                Common.categoryName="Machine_Learning";
-            }
-            else if(Common.categoryId.equals("04")){
                 Common.categoryName="PHP";
             }
-            else if(Common.categoryId.equals("05")){
-                Common.categoryName="Android";
+            else if(Common.categoryId.equals("04")){
+                Common.categoryName="C";
             }
             v.getContext().startActivity(intent);
         }
@@ -73,7 +70,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView.setText(itemData[position].getName());
         holder.imageview.setImageResource(itemData[position].getUrl());
-
     }
 
 

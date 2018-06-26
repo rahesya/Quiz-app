@@ -1,5 +1,6 @@
 package com.acadview.www.aq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,16 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingViewHolder> {
 
-
     List<Ranking> Ranklist;
+    Context context;
 
-    public RankingAdapter(List<Ranking> List) {
+    public RankingAdapter(List<Ranking> List,Context context) {
         this.Ranklist = List;
+        this.context = context;
     }
 
     @NonNull
@@ -33,6 +41,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         Ranking data = Ranklist.get(position);
         holder.txt_name.setText(data.getUserName());
         holder.txt_Score.setText(String.valueOf(data.getScore()));
+        Glide.with(context).load(data.getProfilepic()).into(holder.circleImageView);
 
     }
 
@@ -46,12 +55,14 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
     public class RankingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_name, txt_Score;
+        public CircleImageView circleImageView;
 
 
         public RankingViewHolder(View itemView) {
             super(itemView);
             txt_name = (TextView) itemView.findViewById(R.id.txt_name);
             txt_Score = (TextView) itemView.findViewById(R.id.txt_Score);
+            circleImageView = (CircleImageView) itemView.findViewById(R.id.profile_image);
 
             txt_name.setOnClickListener(this);
             txt_Score.setOnClickListener(this);

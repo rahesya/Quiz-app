@@ -38,7 +38,7 @@ public class RankingFragment extends Fragment {
     List<Ranking> listdata;
 
     FirebaseDatabase database;
-    DatabaseReference questionScore,rankingTbl;
+    DatabaseReference questionScore,rankingTbl,user;
 
     public static int sum=0;
 
@@ -54,6 +54,7 @@ public class RankingFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         questionScore =database.getReference("Question_Score/"+Common.currentuser.getUsername());
         rankingTbl =database.getReference("Ranking");
+        user=database.getReference("Users");
 
     }
 
@@ -69,20 +70,33 @@ public class RankingFragment extends Fragment {
 
         listdata = new ArrayList<>();
 
-        adapter = new RankingAdapter(listdata);
+        adapter = new RankingAdapter(listdata,getContext());
 
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
         rankingList.setLayoutManager(layoutManager);
 
-        updateScore(Common.currentuser.getUsername(), new RankingCallback<Ranking>() {
+        updateScore(Common.currentuser.getUsername(), new RankingCallback<Rank>() {
             @Override
-            public void callBack(Ranking ranking) {
-                rankingTbl.child(ranking.getUserName()).setValue(ranking);
+            public void callBack(final Rank rank) {
+
+                user.child(rank.getUsername()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        Ranking ranking = new Ranking(rank.getUsername(),rank.getScore(),user.getPathtoprofileimage());
+                        rankingTbl.child(ranking.getUserName()).setValue(ranking);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 showRanking();
             }
         });
-
 
         return myFragment ;
     }
@@ -106,18 +120,21 @@ public class RankingFragment extends Fragment {
         });
     }
 
-    private void updateScore(final String username,final RankingCallback<Ranking> callback) {
+    private void updateScore(final String username,final RankingCallback<Rank> callback) {
 
         questionScore.orderByChild("user").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         sum =0;
+
                         for(DataSnapshot data:dataSnapshot.getChildren()){
                             QuestionScore ques =data.getValue(QuestionScore.class);
                             sum+=Integer.parseInt(ques.getScore());
+
                         }
-                        Ranking ranking =new Ranking(username,sum);
-                        callback.callBack(ranking);
+                        user.child(Common.currentuser.getUsername()).child("totalScore").setValue(String.valueOf(sum));
+                        Rank rank =new Rank(username,sum);
+                        callback.callBack(rank);
                     }
 
                     @Override

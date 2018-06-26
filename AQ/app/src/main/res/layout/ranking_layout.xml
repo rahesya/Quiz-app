@@ -1,38 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
+    android:background="@drawable/round"
+    app:cardCornerRadius="7dp"
+    app:layout_constraintCircleRadius="50dp"
     android:id="@+id/ranking_view"
+    app:cardBackgroundColor="@color/closetoblack"
     android:layout_margin="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:weightSum="10"
+        android:backgroundTint="@color/closetoblack"
         android:gravity="center"
         android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="2"
+            android:id="@+id/profile_image"
+            android:src="@drawable/ic_android_icon"
+            android:layout_height="wrap_content"
+            />
 
         <TextView
             android:id="@+id/txt_name"
             android:layout_width="0dp"
-            android:layout_marginLeft="14dp"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
+            android:layout_weight="4"
+            android:textAlignment="center"
             android:text="@string/name"
-            android:textColor="@color/colorDark"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txt_Score"
-            android:layout_marginRight="14dp"
             android:layout_width="0dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:text="@string/Score"
-            android:textColor="@color/colorDark"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 
     </LinearLayout>

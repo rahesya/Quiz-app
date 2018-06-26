@@ -1,6 +1,7 @@
 package com.acadview.www.aq;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +15,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 
-public class QuizStart extends AppCompatActivity {
+public class QuizStart extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnPlay;
+    Button btnchallenging,btneasy,btnnormal,btnhard;
 
     FirebaseDatabase database;
+    boolean gotonextclass=false;
     DatabaseReference questions;
 
     @Override
@@ -29,22 +31,167 @@ public class QuizStart extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         questions = database.getReference("Questions");
 
-        loadQuestion(Common.categoryId);
+        btnchallenging =(Button)findViewById(R.id.challenging);
+        btneasy = (Button)findViewById(R.id.easy);
+        btnnormal = (Button)findViewById(R.id.normal);
+        btnhard = (Button)findViewById(R.id.hard);
 
-        btnPlay =(Button)findViewById(R.id.StartQuiz);
-
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuizStart.this,Playing.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        btnchallenging.setOnClickListener(this);
+        btnhard.setOnClickListener(this);
+        btnnormal.setOnClickListener(this);
+        btneasy.setOnClickListener(this);
 
     }
 
-    private void loadQuestion(String categoryId) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            case R.id.challenging:{
+
+                loadQuestionForChallengingMode(Common.categoryId);
+                if (gotonextclass) {
+                    Intent intent = new Intent(QuizStart.this, Playing.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("Difficulty", 4);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
+                }
+                break;
+            }
+            case R.id.hard:{
+
+                loadQuestionForHardMode(Common.categoryId);
+                if (gotonextclass) {
+                    Intent intent = new Intent(QuizStart.this, Playing.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("Difficulty", 3);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
+                }
+                break;
+            }
+            case R.id.normal:{
+
+                loadQuestionForNormalMode(Common.categoryId);
+                if (gotonextclass) {
+                    Intent intent = new Intent(QuizStart.this, Playing.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("Difficulty", 2);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
+                }
+                break;
+            }
+            case R.id.easy:{
+
+                loadQuestionForEasyMode(Common.categoryId);
+                if (gotonextclass) {
+                    Intent intent = new Intent(QuizStart.this, Playing.class);
+                    Bundle dataSend = new Bundle();
+                    dataSend.putInt("Difficulty", 1);
+                    intent.putExtras(dataSend);
+                    startActivity(intent);
+                    finish();
+                }
+                break;
+            }
+
+        }
+    }
+
+    private void loadQuestionForNormalMode(String categoryId) {
+
+        if(Common.questionList.size()>0){
+            Common.questionList.clear();
+        }
+
+        questions.orderByChild("CategoryId").equalTo(categoryId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                gotonextclass=false;
+                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    Question ques =postSnapshot.getValue(Question.class);
+                    if(ques.getDifficulty().equals("Normal")){
+                        Common.questionList.add(ques);
+                    }
+                }
+                gotonextclass = true;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Collections.shuffle(Common.questionList);
+
+    }
+
+    private void loadQuestionForEasyMode(String categoryId) {
+
+        if(Common.questionList.size()>0){
+            Common.questionList.clear();
+        }
+
+        questions.orderByChild("CategoryId").equalTo(categoryId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                gotonextclass=false;
+                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    Question ques =postSnapshot.getValue(Question.class);
+                    if(ques.getDifficulty().equals("Easy")){
+                        Common.questionList.add(ques);
+                    }
+                }
+                gotonextclass =true;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Collections.shuffle(Common.questionList);
+
+    }
+
+    private void loadQuestionForHardMode(String categoryId) {
+
+        if(Common.questionList.size()>0){
+            Common.questionList.clear();
+        }
+
+        questions.orderByChild("CategoryId").equalTo(categoryId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                gotonextclass=false;
+                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                    Question ques =postSnapshot.getValue(Question.class);
+                    if(ques.getDifficulty().equals("Hard")){
+                        Common.questionList.add(ques);
+                    }
+                }
+
+                gotonextclass=true;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Collections.shuffle(Common.questionList);
+
+    }
+
+    private void loadQuestionForChallengingMode(String categoryId) {
 
         if(Common.questionList.size()>0){
             Common.questionList.clear();
@@ -53,10 +200,14 @@ public class QuizStart extends AppCompatActivity {
         questions.orderByChild("CategoryId").equalTo(categoryId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                gotonextclass=false;
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                     Question ques = postSnapshot.getValue(Question.class);
                     Common.questionList.add(ques);
+                    Collections.sort(Common.questionList,Question.Questionratio);
                 }
+
+                gotonextclass=true;
             }
 
             @Override
@@ -65,7 +216,7 @@ public class QuizStart extends AppCompatActivity {
             }
         });
 
-        //Random list
-        Collections.shuffle(Common.questionList);
     }
+
+
 }

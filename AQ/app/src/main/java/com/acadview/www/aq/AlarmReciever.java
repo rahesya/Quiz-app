@@ -29,7 +29,7 @@ public class AlarmReciever extends BroadcastReceiver {
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setSmallIcon(R.mipmap.ic_appicon_round)
                 .setContentTitle("Acadview Quiz App").setContentText("Hey! Try to solve question today")
                 .setSound(alarmSound).setAutoCancel(true)
                 .setWhen(when).setContentIntent(pendingIntent)

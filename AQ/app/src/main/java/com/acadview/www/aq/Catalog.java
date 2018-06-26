@@ -1,30 +1,33 @@
 package com.acadview.www.aq;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Catalog extends AppCompatActivity {
 
     int backcounter=0;
     BottomNavigationView bottomNavigationView;
 
+    private FirebaseAuth fbAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+
+        fbAuth = FirebaseAuth.getInstance();
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
@@ -83,19 +86,29 @@ public class Catalog extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.setting:{
-
-
+                break;
             }
             case R.id.logout:{
-                Intent setting =new Intent(Catalog.this,Login.class);
-                startActivity(setting);
+                Intent logout =new Intent(Catalog.this,Login.class);
+                signOut();
+                Bundle dataSend = new Bundle();
+                dataSend.putInt("Logout",1);
+                logout.putExtras(dataSend);
+                startActivity(logout);
+                break;
             }
             case R.id.myprofile:{
-
-
+                Intent profile= new Intent(Catalog.this,MyProfile.class);
+                startActivity(profile);
+                break;
             }
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void signOut() {
+        fbAuth.signOut();
+    }
+
 }

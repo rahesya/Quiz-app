@@ -10,6 +10,7 @@ public class ItemData {
         this.url = url;
     }
 
+
     public String getName() {
         return name;
     }

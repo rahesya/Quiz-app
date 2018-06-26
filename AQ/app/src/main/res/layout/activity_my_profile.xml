@@ -1,11 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:context="com.acadview.www.aq.MyProfile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorDark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_android_icon" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_profile_photo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/header_cover_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/profile_circular_border_imageview"
+            android:elevation="20dp"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_android_icon"/>
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/closetoblack"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/header_cover_image"
+            android:background="@drawable/round"
+            android:elevation="4dp"
+            android:paddingBottom="24dp">
 
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/add_friend"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/drop_down_option_menu"
+                android:layout_marginEnd="53dp"
+                android:background="@color/colorDark"
+                android:src="@drawable/ic_skip_next" />
+
+            <ImageView
+                android:id="@+id/drop_down_option_menu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="13dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorDark"
+                android:src="@drawable/ic_skip_previous" />
+
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="76dp"
+                android:text="Name"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:background="@color/colorDark"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_layout"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="50dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/round"
+                android:backgroundTint="@color/closetoblack"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:id="@+id/linearlayout"
+                    android:baselineAligned="false"
+                    android:layout_height="match_parent"
+                    android:weightSum="9"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearlayout1"
+                        android:fontFamily="sans-serif-medium"
+                        android:orientation="vertical"
+                        android:layout_weight="3"
+                        android:paddingEnd="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvquestionsattempted"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="Questions Attempted"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:id="@+id/questionsattempted"
+                            android:text="123"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:id="@+id/linearlayout2"
+                        android:orientation="vertical"
+                        android:layout_weight="3"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvcorrectattempts"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="Correct Attempts"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/correctattempts"
+                            android:paddingBottom="5dp"
+                            android:text="123"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout3"
+                        android:layout_width="122dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:weightSum="10"
+                        android:fontFamily="sans-serif-medium"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvtotalscore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="Total                  Score"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/totalscore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="123"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/closetoblack"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAlignment="textStart"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorWhite"
+                    android:padding="20dp"
+                    android:text="Java Score" />
+                <TextView
+                    android:id="@+id/javascore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorBackground"
+                    android:padding="20dp"
+                    android:text="0" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/closetoblack"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAlignment="textStart"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorWhite"
+                    android:padding="20dp"
+                    android:text="Python Score" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/pythonscore"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorBackground"
+                    android:padding="20dp"
+                    android:text="0" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/closetoblack"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAlignment="textStart"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorWhite"
+                    android:padding="20dp"
+                    android:text="PHP Score" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/phpscore"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorBackground"
+                    android:padding="20dp"
+                    android:text="0" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/closetoblack"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAlignment="textStart"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorWhite"
+                    android:padding="20dp"
+                    android:text="C Score" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/cscore"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="5"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"
+                    android:textColor="@color/colorBackground"
+                    android:padding="20dp"
+                    android:text="0" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

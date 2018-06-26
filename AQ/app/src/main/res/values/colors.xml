@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#460475</color>
+    <color name="colorPrimary">#3797CF</color>
     <color name="colorDark">#000000</color>
-    <color name="colorBackground">#460475</color>
+    <color name="colorBackground">#3797CF</color>
     <color name="colorWhite">#fcfcfc</color>
     <color name="blackish_blue">#0e0d1e</color>
     <color name="selected_colour">#3dbaef</color>
@@ -11,6 +11,7 @@
     <color name="colormstblue">#49BEFF</color>
     <color name="colorPrimaryDark">#65DCE5</color>
     <color name="colorAccent">#0D5D98</color>
+    <color name="closetoblack">#1a1919</color>
 
     <color name="address">#2F7092</color>
     <color name="followers">#0D5D98</color>
@@ -18,10 +19,11 @@
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="circleBorder">#50FFFFFF</color>
     <color name="gradEnd">#67EFC8</color>
-    <color name="gradStart">#63C9FF</color>
     <color name="followersBg">#65DCE5</color>
     <color name="followingBg">#49BEFF</color>
     <color name="grey">#E5E5E5</color>
-
+    <color name="transparent">#00000000</color>
+    <color name="gradStart">#19AA8B</color>
+    <color name="gradStop">#23A7D8</color>
     <color name="white">#FFFFFF</color>
 </resources>

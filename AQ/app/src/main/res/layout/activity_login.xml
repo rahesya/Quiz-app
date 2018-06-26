@@ -1,173 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/loginlayout"
-    tools:context=".Login">
+    android:orientation="vertical"
+    android:background="@color/colorDark">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="158dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/sign_in" />
+        android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/pbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:indeterminate="true"
-        app:layout_constraintBottom_toBottomOf="@+id/phoneet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameet" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/quiz_image"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acadview Quiz"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="200dp"
+            android:indeterminate="true"/>
 
 
-    <ImageView
-        android:id="@+id/useric"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/passwordic"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/person" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/passwordic"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/passwordet"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/useric"
-        app:layout_constraintVertical_bias="0.031"
-        app:srcCompat="@drawable/password" />
+            <EditText
+                android:layout_width="match_parent"
+                android:id="@+id/usernameet"
+                android:fontFamily="sans-serif-medium"
+                android:layout_height="50dp"
+                android:textColor="@color/colorWhite"
+                android:hint="Username"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorWhite"
+                android:background="@color/closetoblack"/>
 
-    <ImageView
-        android:id="@+id/phoneic"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignStart="@+id/useric"
-        android:layout_alignTop="@+id/phoneet"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordic"
-        app:layout_constraintVertical_bias="0.026"
-        app:srcCompat="@drawable/phone" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite"/>
 
-    <EditText
-        android:id="@+id/usernameet"
-        android:layout_width="297dp"
-        android:layout_height="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/useric"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:ems="10"
-        android:hint="      Username"
-        android:inputType="textPersonName"
-        android:textStyle="bold"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toEndOf="@+id/useric"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/passwordet"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorWhite"
+                android:background="@color/closetoblack"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:id="@+id/phoneet"
+                android:layout_height="50dp"
+                android:textColor="@color/colorWhite"
+                android:hint="Phone"
+                android:inputType="number"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColorHint="@color/colorWhite"
+                android:background="@color/closetoblack"/>
 
-    <EditText
-        android:id="@+id/passwordet"
-        android:layout_width="297dp"
-        android:layout_height="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/usernameet"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:ems="10"
-        android:hint="      Password"
-        android:inputType="textPassword"
-        android:textStyle="bold"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toEndOf="@+id/passwordic"
-        app:layout_constraintTop_toBottomOf="@+id/usernameet"
-        app:layout_constraintVertical_bias="0.024" />
 
-    <!--<EditText-->
-        <!--android:id="@+id/emailet"-->
-        <!--android:background="@drawable/round"-->
-        <!--android:bottomLeftRadius="10dp"-->
-        <!--android:bottomRightRadius="10dp"-->
-        <!--android:ems="10"-->
-        <!--android:hint="      Email"-->
-        <!--android:inputType="textPassword"-->
-        <!--android:textStyle="bold"-->
-        <!--android:topLeftRadius="10dp"-->
-        <!--android:topRightRadius="10dp"-->
-        <!--android:layout_width="297dp"-->
-        <!--android:layout_height="25dp"-->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/SignInbt"
+                android:text="LOGIN"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/colorWhite"
+                android:backgroundTint="@color/colorBackground"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/forgottv"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:onClick="onforgotTap"
+                android:text="forgot password?"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/signuptv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorBackground"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20dp"
+                android:text="SIGN UP"
+                android:onClick="onsignupTap"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:background="@color/colorWhite"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/loginlayout"-->
+    <!--tools:context=".Login">-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="158dp"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
         <!--android:layout_marginBottom="8dp"-->
         <!--android:layout_marginEnd="8dp"-->
         <!--android:layout_marginStart="8dp"-->
         <!--android:layout_marginTop="8dp"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/SignInbt"-->
+        <!--android:background="@color/colorBackground"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.887"-->
+        <!--app:layout_constraintHorizontal_bias="1.0"-->
         <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/phoneet"-->
-        <!--app:layout_constraintVertical_bias="0.153" />-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.0"-->
+        <!--app:srcCompat="@drawable/sign_in" />-->
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/pbar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:indeterminate="true"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/phoneet"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/usernameet" />-->
+
 
     <!--<ImageView-->
-        <!--android:id="@+id/emailic"-->
+        <!--android:id="@+id/useric"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignStart="@+id/passwordic"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+        <!--app:layout_constraintVertical_bias="0.0"-->
+        <!--app:srcCompat="@drawable/person" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/passwordic"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignTop="@+id/passwordet"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.024"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/useric"-->
+        <!--app:layout_constraintVertical_bias="0.031"-->
+        <!--app:srcCompat="@drawable/password" />-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/phoneic"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="25dp"-->
         <!--android:layout_alignStart="@+id/useric"-->
@@ -175,152 +230,201 @@
         <!--android:layout_marginBottom="8dp"-->
         <!--android:layout_marginEnd="8dp"-->
         <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginTop="12dp"-->
         <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toStartOf="@+id/emailet"-->
-        <!--app:layout_constraintHorizontal_bias="0.421"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.024"-->
         <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/phoneic"-->
-        <!--app:layout_constraintVertical_bias="0.021"-->
-        <!--app:srcCompat="@drawable/email" />-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/passwordic"-->
+        <!--app:layout_constraintVertical_bias="0.026"-->
+        <!--app:srcCompat="@drawable/phone" />-->
 
-    <EditText
-        android:id="@+id/phoneet"
-        android:layout_width="297dp"
-        android:layout_height="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/usernameet"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:ems="10"
-        android:hint="      Phone"
-        android:inputType="number"
-        android:textStyle="bold"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toEndOf="@+id/phoneic"
-        app:layout_constraintTop_toBottomOf="@+id/passwordet"
-        app:layout_constraintVertical_bias="0.043" />
+    <!--<EditText-->
+        <!--android:id="@+id/usernameet"-->
+        <!--android:layout_width="297dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignTop="@+id/useric"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/round"-->
+        <!--android:bottomLeftRadius="10dp"-->
+        <!--android:bottomRightRadius="10dp"-->
+        <!--android:ems="10"-->
+        <!--android:hint="      Username"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:textStyle="bold"-->
+        <!--android:topLeftRadius="10dp"-->
+        <!--android:topRightRadius="10dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.578"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/useric"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/forgottv"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="8dp"
-        android:layout_toStartOf="@+id/forgottv"
-        android:fontFamily="@font/days_one"
-        android:text="Forgot :"
-        android:textColor="@android:color/background_dark"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/forgottv"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneet"
-        app:layout_constraintVertical_bias="0.19"
-        tools:ignore="SmallSp" />
+    <!--<EditText-->
+        <!--android:id="@+id/passwordet"-->
+        <!--android:layout_width="297dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignStart="@+id/usernameet"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/round"-->
+        <!--android:bottomLeftRadius="10dp"-->
+        <!--android:bottomRightRadius="10dp"-->
+        <!--android:ems="10"-->
+        <!--android:hint="      Password"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:textStyle="bold"-->
+        <!--android:topLeftRadius="10dp"-->
+        <!--android:topRightRadius="10dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.578"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/passwordic"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/usernameet"-->
+        <!--app:layout_constraintVertical_bias="0.024" />-->
 
-    <TextView
-        android:id="@+id/forgottv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/usernameet"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/days_one"
-        android:text="Password?"
-        android:textColor="@color/colorBackground"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneet"
-        app:layout_constraintVertical_bias="0.19"
-        tools:ignore="SmallSp" />
+    <!--<EditText-->
+        <!--android:id="@+id/phoneet"-->
+        <!--android:layout_width="297dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignStart="@+id/usernameet"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/round"-->
+        <!--android:bottomLeftRadius="10dp"-->
+        <!--android:bottomRightRadius="10dp"-->
+        <!--android:ems="10"-->
+        <!--android:hint="      Phone"-->
+        <!--android:inputType="number"-->
+        <!--android:textStyle="bold"-->
+        <!--android:topLeftRadius="10dp"-->
+        <!--android:topRightRadius="10dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.578"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/phoneic"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/passwordet"-->
+        <!--app:layout_constraintVertical_bias="0.043" />-->
 
-    <Button
-        android:id="@+id/SignInbt"
-        android:layout_width="120dp"
-        android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round"
-        android:backgroundTint="@color/colorBackground"
-        android:fontFamily="@font/days_one"
-        android:shadowRadius="5"
-        android:text="SIGN IN"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgottv"
-        app:layout_constraintVertical_bias="0.103" />
+    <!--<TextView-->
+        <!--android:id="@+id/tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/forgottv"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="108dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_toStartOf="@+id/forgottv"-->
+        <!--android:fontFamily="@font/days_one"-->
+        <!--android:text="Forgot :"-->
+        <!--android:textColor="@android:color/background_dark"-->
+        <!--android:textSize="10sp"-->
+        <!--android:textStyle="bold"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/forgottv"-->
+        <!--app:layout_constraintHorizontal_bias="1.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/phoneet"-->
+        <!--app:layout_constraintVertical_bias="0.19"-->
+        <!--tools:ignore="SmallSp" />-->
 
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/days_one"
-        android:text="Don't have a account?"
-        android:textColor="@color/colorDark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignInbt"
-        app:layout_constraintVertical_bias="0.014" />
+    <!--<TextView-->
+        <!--android:id="@+id/forgottv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/usernameet"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="16dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:fontFamily="@font/days_one"-->
+        <!--android:text="Password?"-->
+        <!--android:textColor="@color/colorBackground"-->
+        <!--android:textSize="10sp"-->
+        <!--android:textStyle="bold"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="1.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/phoneet"-->
+        <!--app:layout_constraintVertical_bias="0.19"-->
+        <!--tools:ignore="SmallSp" />-->
 
-    <TextView
-        android:id="@+id/signuptv"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_below="@+id/tv2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/days_one"
-        android:onClick="onsignupTap"
-        android:text="SIGN UP"
-        android:textColor="@color/colorBackground"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv2"
-        app:layout_constraintVertical_bias="0.117" />
+    <!--<Button-->
+        <!--android:id="@+id/SignInbt"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="46dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/round"-->
+        <!--android:backgroundTint="@color/colorBackground"-->
+        <!--android:fontFamily="@font/days_one"-->
+        <!--android:shadowRadius="5"-->
+        <!--android:text="SIGN IN"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/forgottv"-->
+        <!--app:layout_constraintVertical_bias="0.103" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:fontFamily="@font/days_one"-->
+        <!--android:text="Don't have a account?"-->
+        <!--android:textColor="@color/colorDark"-->
+        <!--android:textStyle="bold"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/SignInbt"-->
+        <!--app:layout_constraintVertical_bias="0.014" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/signuptv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="33dp"-->
+        <!--android:layout_below="@+id/tv2"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:fontFamily="@font/days_one"-->
+        <!--android:onClick="onsignupTap"-->
+        <!--android:text="SIGN UP"-->
+        <!--android:textColor="@color/colorBackground"-->
+        <!--android:textSize="27sp"-->
+        <!--android:textStyle="bold"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.502"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tv2"-->
+        <!--app:layout_constraintVertical_bias="0.117" />-->
 
 
-</android.support.constraint.ConstraintLayout>
+<!--</android.support.constraint.ConstraintLayout>-->

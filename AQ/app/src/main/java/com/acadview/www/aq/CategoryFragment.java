@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,12 +38,10 @@ public class CategoryFragment extends Fragment{
        myFragment =inflater.inflate(R.layout.fragment_category,container,false);
 
         listCategory = (RecyclerView)myFragment.findViewById(R.id.categorylist);
-        ItemData itemdatas[]= {new ItemData("Java",R.drawable.javao1)
-                ,new ItemData("Python",R.drawable.python)
-                ,new ItemData("ML",R.drawable.machinelearning)
-                ,new ItemData("PHP",R.drawable.php)
-                ,new ItemData("Android",R.drawable.android)};
-
+        ItemData itemdatas[]= {new ItemData("Java",R.drawable.ic_java_icon)
+                ,new ItemData("Python",R.drawable.ic_python_icon)
+                ,new ItemData("PHP",R.drawable.ic_php_icon)
+                ,new ItemData("C",R.drawable.ic_android_icon)};
         listCategory.setLayoutManager(new GridLayoutManager(getContext(),2));
         MyAdapter myAdapter =new MyAdapter(itemdatas);
         listCategory.setAdapter(myAdapter);

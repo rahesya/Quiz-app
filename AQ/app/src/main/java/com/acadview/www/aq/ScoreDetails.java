@@ -59,8 +59,6 @@ public class ScoreDetails extends AppCompatActivity {
         updating_individual_scores();
         showscores();
 
-        adapter.notifyDataSetChanged();
-        scoreList.setAdapter(adapter);
     }
 
     private void showscores() {
@@ -84,61 +82,21 @@ public class ScoreDetails extends AppCompatActivity {
 
     }
 
-    private void loadScoreDetail(final String viewUser) {
-        question_score.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot data:dataSnapshot.getChildren()){
-                    QuestionScore local = data.getValue(QuestionScore.class);
-                    String Category_name = local.getCategoryName();
-                    int score = Integer.parseInt(local.getScore());
-                    Scores scoreobj = new Scores(Category_name,score);
-                    AllScores.add(scoreobj);
-                    uploadingscores(scoreobj,viewUser);
-                    adapter.notifyDataSetChanged();
-                    scoreList.setAdapter(adapter);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-//        Query query = question_score.orderByChild("user").equalTo(viewUser);
-//
-//        final FirebaseRecyclerOptions<QuestionScore> option = new FirebaseRecyclerOptions.Builder<QuestionScore>()
-//                .setQuery(query, QuestionScore.class)
-//                .build();
-//
-//        adapter = new FirebaseRecyclerAdapter <QuestionScore,ScoreDetailViewHolder>(option) {
-//            @Override
-//            protected void onBindViewHolder(@NonNull ScoreDetailViewHolder holder, int position, @NonNull QuestionScore model) {
-//                holder.txt_score.setText(model.getScore());
-//                holder.txt_categoryname.setText(model.getCategoryName());
-//            }
-//
-//            @NonNull
-//            @Override
-//            public ScoreDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.scoredetail_layout,parent,false);
-//                ScoreDetailViewHolder svh = new ScoreDetailViewHolder(view);
-//                return svh;
-//            }
-//        };
-//
-//        adapter.notifyDataSetChanged();
-//        scoreList.setAdapter(adapter);
-//        question_score.orderByChild("user").equalTo(viewUser).addListenerForSingleValueEvent(new ValueEventListener() {
+//    private void loadScoreDetail(final String viewUser) {
+//        question_score.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
 //                for(DataSnapshot data:dataSnapshot.getChildren()){
-//                    Scores local = data.getValue(Scores.class);
-//                    AllScores.add(local);
+//                    QuestionScore local = data.getValue(QuestionScore.class);
+//                    String Category_name = local.getCategoryName();
+//                    int score = Integer.parseInt(local.getScore());
+//                    Scores scoreobj = new Scores(Category_name,score);
+//                    AllScores.add(scoreobj);
+//                    uploadingscores(scoreobj,viewUser);
+//                    adapter.notifyDataSetChanged();
+//                    scoreList.setAdapter(adapter);
 //                }
+//
 //            }
 //
 //            @Override
@@ -147,16 +105,13 @@ public class ScoreDetails extends AppCompatActivity {
 //            }
 //        });
 //
-//        adapter.notifyDataSetChanged();
-//        Toast.makeText(getApplicationContext(),"size of list"+String.valueOf(AllScores.size()), Toast.LENGTH_LONG).show();
-//        scoreList.setAdapter(adapter);
-    }
-
-    private void uploadingscores(Scores scores,String user) {
-
-        scoretbl.child(user).setValue(scores);
-
-    }
+//    }
+//
+//    private void uploadingscores(Scores scores,String user) {
+//
+//        scoretbl.child(user).setValue(scores);
+//
+//    }
 
     private void updating_individual_scores() {
         question_score.addListenerForSingleValueEvent(new ValueEventListener() {

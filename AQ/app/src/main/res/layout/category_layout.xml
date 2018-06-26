@@ -6,15 +6,26 @@
     android:id="@+id/Myview"
     >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="111dp"
-        android:layout_height="111dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="23dp"
-        app:srcCompat="@drawable/javao1" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/title"
+        android:padding="5dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/round"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/closetoblack"
+        app:cardElevation="10dp"
+        android:layout_width="153dp"
+        android:layout_height="190dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="111dp"
+            android:layout_height="111dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="23dp"
+            app:srcCompat="@drawable/ic_java_icon" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,9 +33,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="66dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="142dp"
         android:text="TextView"
-        android:textColor="@color/grey"
-        />
+        android:textColor="@color/colorBackground" />
+
+
+    </android.support.v7.widget.CardView>
 </android.widget.RelativeLayout>

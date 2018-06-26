@@ -48,13 +48,13 @@ public class Done extends AppCompatActivity {
             int totalQuestion = extra.getInt("Total");
             int correctAnswer = extra.getInt("Correct");
 
-            txtResultScore.setText(String .format("Score : %s",String.valueOf(score)));
+            txtResultScore.setText(String .format("Score :"+String.valueOf(score)));
             gettxtResultQuestion.setText(String.format("Passed : %d/%d",correctAnswer,totalQuestion));
 
             progressBar.setMax(totalQuestion);
             progressBar.setProgress(correctAnswer);
 
-            QuestionScore questionScore = new QuestionScore(Common.categoryName,Common.categoryId,Common.currentuser.getUsername(),String.valueOf(score),Common.categoryName);
+            QuestionScore questionScore = new QuestionScore(Common.categoryId,Common.currentuser.getUsername(),String.valueOf(score),Common.categoryName);
 
             question_score.child(Common.categoryName).setValue(questionScore);
         }
