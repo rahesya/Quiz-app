@@ -30,10 +30,10 @@ public class AlarmReciever extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_appicon_round)
-                .setContentTitle("Acadview Quiz App").setContentText("Hey! Try to solve question today")
+                .setContentTitle("Acadview Quiz").setContentText("Hey! Try to solve questions today")
                 .setSound(alarmSound).setAutoCancel(true)
                 .setWhen(when).setContentIntent(pendingIntent)
-                .setVibrate(new long[]{1000,1000,1000,1000,1000});
+                .setVibrate(new long[]{100,100,100,100,100});
         notificationManager.notify(0,builder.build());
 
     }

@@ -70,7 +70,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/sharma/Install/android-studio-ide-171.4443003-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_sentiment_dissatisfied_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/home/sharma/Install/android-studio-ide-171.4443003-linux/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_search_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -80,9 +80,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3797cf" />
                             <entry key="height" value="36" />
-                            <entry key="outputName" value="ic_hard" />
+                            <entry key="outputName" value="ic_search" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="$USER_HOME$/Downloads/knowledge.svg" />
                             <entry key="width" value="36" />

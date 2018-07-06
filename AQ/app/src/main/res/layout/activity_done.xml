@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:id="@+id/congrats"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:fontFamily="@font/alfa_slab_one"
@@ -44,27 +45,73 @@
         android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/total_ques"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/score"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="142dp"
-        android:layout_toStartOf="@+id/userpic"
+        android:layout_alignStart="@+id/congrats"
+        android:layout_marginBottom="181dp"
+        android:fontFamily="@font/days_one"
+        android:text="Total Questions"
+        android:textColor="@color/colorBackground"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/correct_ans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/congrats"
+        android:layout_below="@+id/total_ques"
+        android:layout_marginTop="-182dp"
+        android:fontFamily="@font/days_one"
+        android:text="Correct answer"
+        android:textColor="@color/colorBackground"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/congrats"
+        android:layout_below="@+id/correct_ans"
         android:fontFamily="@font/days_one"
         android:text="Score"
         android:textColor="@color/colorBackground"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/player_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/score"
-        android:layout_toEndOf="@+id/userpic"
+        android:layout_alignEnd="@+id/congrats"
+        android:layout_below="@+id/correct_ans"
         android:fontFamily="@font/days_one"
         android:text="0"
         android:textColor="@color/colorBackground"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/player_total_ques"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/congrats"
+        android:layout_alignTop="@+id/total_ques"
+        android:fontFamily="@font/days_one"
+        android:text="0"
+        android:textColor="@color/colorBackground"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/player_correct_ans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/congrats"
+        android:layout_below="@+id/total_ques"
+        android:layout_marginTop="-181dp"
+        android:fontFamily="@font/days_one"
+        android:text="0"
+        android:textColor="@color/colorBackground"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnTryAgain"

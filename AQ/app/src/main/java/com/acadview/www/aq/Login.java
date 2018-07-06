@@ -6,8 +6,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -55,16 +59,42 @@ public class Login extends Activity {
 
     int logout=0;
 
-    SharedPreferences userdetails;
+    MediaPlayer submitmedia;
 
-    boolean verificationdone = false;
+    boolean doubleBackToExitPressedOnce = false;
 
-    Button Bsign_in, Bresend, Bok;
+    static SharedPreferences userdetails,admindetails;
+
+    boolean verificationdone = false,alarmraised=false;
+
+    Button Bsign_in,Badminsign_in, Bresend, Bok;
     TextView Tsign_up, forgot;
     EditText Euname, Epaswd, Ephone, EOtp;
 
     FirebaseDatabase database;
-    DatabaseReference users,defaultimages;
+    DatabaseReference users,defaultimages,admin;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +102,10 @@ public class Login extends Activity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_login);
 
+        if (!alarmraised)
         registerAlarm();
+
+        submitmedia = MediaPlayer.create(this,R.raw.fordback);
 
         View progress_loop = (ProgressBar) findViewById(R.id.pbar);
         progress_loop.bringToFront();
@@ -81,7 +114,7 @@ public class Login extends Activity {
         mAuth = FirebaseAuth.getInstance();
 
         Bsign_in = (Button) findViewById(R.id.SignInbt);
-
+        Badminsign_in = (Button) findViewById(R.id.AdminSignInbt);
 
         Tsign_up = (TextView) findViewById(R.id.signuptv);
         forgot = (TextView) findViewById(R.id.forgottv);
@@ -92,43 +125,111 @@ public class Login extends Activity {
 
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
+        admin = database.getReference("Admins");
         defaultimages = database.getReference("DefaultImages");
 
         userdetails = getSharedPreferences("Users_info", Context.MODE_PRIVATE);
+        admindetails = getSharedPreferences("Admins_info",Context.MODE_PRIVATE);
 
-        final SharedPreferences.Editor edit = userdetails.edit();
+//        setsharedpreference("sound","false",userdetails);
+//        setsharedpreference("sound","fasle",admindetails);
 
         Bundle extra=getIntent().getExtras();
         if(extra != null){
             logout = extra.getInt("Logout");
            if (logout==1) {
-               edit.putString(Uname, "");
-               edit.putString(Pword, "");
-               edit.apply();
-               Euname.setText(userdetails.getString(Uname, null));
-               Epaswd.setText(userdetails.getString(Pword, null));
+               setsharedpreference(Uname,"",userdetails);
+               setsharedpreference(Pword,"",userdetails);
+               Euname.setText(getsharedpreference(Uname,userdetails));
+               Epaswd.setText(getsharedpreference(Pword,userdetails));
+           }
+           if (logout==2){
+               setsharedpreference(Uname,"",admindetails);
+               setsharedpreference(Pword,"",admindetails);
+               Euname.setText(getsharedpreference(Uname,admindetails));
+               Epaswd.setText(getsharedpreference(Pword,admindetails));
            }
         }
-        else if(userdetails.contains(Uname) && userdetails.contains(Pword)){
+        else if(getsharedpreference(Uname,userdetails)!=null && getsharedpreference(Pword,userdetails)!=null){
 
-            Euname.setText(userdetails.getString(Uname, null));
-            Epaswd.setText(userdetails.getString(Pword, null));
-            signIn(userdetails.getString(Pword,null),userdetails.getString(Uname, null));
+            Euname.setText(getsharedpreference(Uname,userdetails));
+            Epaswd.setText(getsharedpreference(Pword,userdetails));
+            signIn(getsharedpreference(Pword,userdetails),getsharedpreference(Uname,userdetails));
+        }
+        else if(getsharedpreference(Uname,admindetails)!=null && getsharedpreference(Pword,admindetails)!=null){
+
+            Euname.setText(getsharedpreference(Uname,admindetails));
+            Epaswd.setText(getsharedpreference(Pword,admindetails));
+
+            adminsignin(getsharedpreference(Uname,admindetails),getsharedpreference(Pword,admindetails));
         }
 
         Bsign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                edit.putString(Uname, Euname.getText().toString());
-                edit.putString(Pword, Epaswd.getText().toString());
-                edit.apply();
+                if (Login.getsharedpreference(Euname.getText().toString(),Login.userdetails)=="true"){
+                    submitmedia.start();
+                }
+                setsharedpreference(Uname,Euname.getText().toString(),userdetails);
+                setsharedpreference(Pword,Epaswd.getText().toString(),userdetails);
 
                 findViewById(R.id.pbar).setVisibility(View.VISIBLE);
                 signIn(Epaswd.getText().toString(), Euname.getText().toString());
             }
         });
 
+        Badminsign_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Login.getsharedpreference(Euname.getText().toString(),admindetails)=="true")
+                    submitmedia.start();
+
+                setsharedpreference(Uname,Euname.getText().toString(),admindetails);
+                setsharedpreference(Pword,Epaswd.getText().toString(),admindetails);
+
+                findViewById(R.id.pbar).setVisibility(View.VISIBLE);
+                adminsignin(Euname.getText().toString(),Epaswd.getText().toString());
+            }
+        });
+
+    }
+
+    public void adminsignin(final String username, final String password){
+        admin.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (username!=null){
+                    if (dataSnapshot.child(username).exists()){
+                        final Admin newadmin = dataSnapshot.child(username).getValue(Admin.class);
+                        if (newadmin.getPassword().equals(password)) {
+                            Intent intent = new Intent(Login.this, AdminView.class);
+                            Common.currentadmin = newadmin;
+                            startActivity(intent);
+                        }
+                        else {
+                            findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                            Toast.makeText(Login.this, "Username or password is wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Euname.setText("");
+                        Epaswd.setText("");
+                        findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                        Toast.makeText(Login.this, "You are not an admin", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                    Toast.makeText(Login.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void onsignupTap(View v) {
@@ -200,15 +301,15 @@ public class Login extends Activity {
                             startActivity(intent);
                         } else {
                             findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                            Toast.makeText(Login.this, "Username or password is wrong", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "Username or password is wrong", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                        Toast.makeText(Login.this, "Have'nt you Signed up yet!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Have'nt you Signed up yet!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                    Toast.makeText(Login.this, "Please enter your username", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Please enter your username", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -305,6 +406,7 @@ public class Login extends Activity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(Login.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager)this.getSystemService(this.ALARM_SERVICE);
         am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+        alarmraised=true;
     }
 
     private boolean showPopup() {
@@ -379,6 +481,17 @@ public class Login extends Activity {
                         }
                     }
                 });
+    }
+
+    public static String getsharedpreference(String key,SharedPreferences sharedPreferences){
+
+        return sharedPreferences.getString(key,null);
+    }
+
+    public static void setsharedpreference(String key, String value,SharedPreferences sharedPreferences){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
     }
 
 }

@@ -2,11 +2,14 @@ package com.acadview.www.aq;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Catalog extends AppCompatActivity {
 
-    int backcounter=0;
+    boolean doubleBackToExitPressedOnce =false;
     BottomNavigationView bottomNavigationView;
 
     private FirebaseAuth fbAuth;
@@ -26,6 +29,11 @@ public class Catalog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+        Toolbar toolbar = findViewById(R.id.catalogtoolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.transparent_icon);
 
         fbAuth = FirebaseAuth.getInstance();
 
@@ -62,13 +70,24 @@ public class Catalog extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        ++backcounter;
-        Toast.makeText(getApplicationContext(),"To exit the app press the back",Toast.LENGTH_LONG).show();
-        if(backcounter>=2){
-            backcounter=0;
-            finish();
-            System.exit(0);
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return;
         }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     @Override
@@ -82,10 +101,11 @@ public class Catalog extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Toast.makeText(this,"You clicked "+item.toString(),Toast.LENGTH_LONG).show();
-
         switch(item.getItemId()){
             case R.id.setting:{
+                Intent setting = new Intent(Catalog.this,Settings_activity.class);
+                Common.student=true;
+                startActivity(setting);
                 break;
             }
             case R.id.logout:{

@@ -41,7 +41,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         Ranking data = Ranklist.get(position);
         holder.txt_name.setText(data.getUserName());
         holder.txt_Score.setText(String.valueOf(data.getScore()));
-        Glide.with(context).load(data.getProfilepic()).into(holder.circleImageView);
+        Picasso.with(context).load(data.getProfilepic()).into(holder.circleImageView);
 
     }
 
@@ -56,7 +56,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
         public TextView txt_name, txt_Score;
         public CircleImageView circleImageView;
-
 
         public RankingViewHolder(View itemView) {
             super(itemView);

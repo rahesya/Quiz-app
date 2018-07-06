@@ -46,7 +46,7 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
 
     private ImageView backimage;
     private CircleImageView profileimage;
-    TextView totalscore,correctattempts,totalattempts,user_name,java_score,python_score,php_score,c_score;
+    TextView totalscore,correctattempts,totalattempts,user_name,java_score,python_score,php_score,c_score,phone_number;
 
     private Uri filepath;
     private final int PICK_IMAGE_REQUEST = 71;
@@ -66,6 +66,7 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
         scoretbl = FirebaseDatabase.getInstance().getReference("Scores/"+Common.currentuser.getUsername());
 
         java_score=(TextView)findViewById(R.id.javascore);
+        phone_number=(TextView)findViewById(R.id.user_phonenumber);
         python_score=(TextView)findViewById(R.id.pythonscore);
         php_score=(TextView)findViewById(R.id.phpscore);
         c_score =(TextView)findViewById(R.id.cscore);
@@ -92,7 +93,7 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
                 totalattempts.setText(tattempts);
                 String cattempts=dataSnapshot.child(Common.currentuser.getUsername()).child("correctAttempts").getValue().toString();
                 correctattempts.setText(cattempts);
-
+                phone_number.setText(Common.currentuser.getPhone());
                 Picasso.with(getBaseContext()).load(dataSnapshot.child(Common.currentuser.getUsername()).child("pathtobackimage").getValue().toString())
                         .into(backimage);
 

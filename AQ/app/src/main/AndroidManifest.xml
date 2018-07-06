@@ -42,7 +42,13 @@
         <activity
             android:name=".ScoreDetails"
             android:screenOrientation="portrait" />
-        <activity android:name=".Password_change"></activity>
+        <activity
+            android:name=".Password_change"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdminView"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Settings_activity"></activity>
     </application>
 
 </manifest>
