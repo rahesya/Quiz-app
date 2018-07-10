@@ -38,8 +38,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     String ClickedButton_txt;
 
     int index=0,score =0,totalQuestion,correctAnswer,difficultylevel,lives;
-    boolean questionattempted[];
-    boolean allQuestionAttempted=false;
+    boolean answermarkedcorrect[];
+    int optionselected[];
     MediaPlayer submitmedia;
 
     int questionshow=0;
@@ -88,7 +88,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
         btnD.setOnClickListener(this);
 
         totalQuestion = Common.questionList.size();
-        questionattempted = new boolean[totalQuestion];
+        answermarkedcorrect = new boolean[totalQuestion];
+        optionselected = new int[totalQuestion];
 
         progressBar.setProgress(index*100/totalQuestion);
 
@@ -102,17 +103,40 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(Playing.this,"This is the first question",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    btnB.setTextColor(Color.WHITE);
-                    btnA.setTextColor(Color.WHITE);
-                    btnC.setTextColor(Color.WHITE);
-                    btnD.setTextColor(Color.WHITE);
-                        for(int counter=questionshow-1;counter>=0;counter--) {
-                            if (!questionattempted[counter]){
-                                questionshow=counter;
-                                progressBar.setProgress(questionshow*100/totalQuestion);
-                                showQuestion(counter);
-                                break;}
-                        }
+                    questionshow=questionshow-1;
+                    if (optionselected[questionshow]==0){
+                        btnB.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.WHITE);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                    else if (optionselected[questionshow]==1){
+                        btnB.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                    else if (optionselected[questionshow]==2){
+                        btnA.setTextColor(Color.WHITE);
+                        btnB.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                   else if (optionselected[questionshow]==3){
+                        btnB.setTextColor(Color.WHITE);
+                        btnC.setTextColor(Color.BLACK);
+                        btnA.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                   else if (optionselected[questionshow]==4){
+                        btnB.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.WHITE);
+                    }
+
+                    showQuestion(questionshow);
+
                 }
             }
         });
@@ -123,25 +147,46 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 if (Login.getsharedpreference(Common.currentuser.getUsername(),Login.userdetails)=="true"){
                     submitmedia.start();
                 }
-                if (questionshow==totalQuestion){
+                if (questionshow>=totalQuestion){
                     Toast.makeText(Playing.this,"This is the Last question",Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    btnB.setTextColor(Color.WHITE);
-                    btnA.setTextColor(Color.WHITE);
-                    btnC.setTextColor(Color.WHITE);
-                    btnD.setTextColor(Color.WHITE);
-                     for(int counter=questionshow+1;counter<totalQuestion;counter++){
-                         if(!questionattempted[counter]){
-                             questionshow=counter;
-                             progressBar.setProgress(questionshow*100/totalQuestion);
-                             showQuestion(counter);
-                             break;}
-                     }
+                else {
+                    questionshow=questionshow+1;
+                    if (optionselected[questionshow]==0){
+                        btnB.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.WHITE);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                    else if (optionselected[questionshow]==1){
+                        btnB.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                    else if (optionselected[questionshow]==2){
+                        btnA.setTextColor(Color.WHITE);
+                        btnB.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                   else if (optionselected[questionshow]==3){
+                        btnB.setTextColor(Color.WHITE);
+                        btnC.setTextColor(Color.BLACK);
+                        btnA.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.WHITE);
+                    }
+                   else if (optionselected[questionshow]==4){
+                        btnB.setTextColor(Color.WHITE);
+                        btnD.setTextColor(Color.BLACK);
+                        btnC.setTextColor(Color.WHITE);
+                        btnA.setTextColor(Color.WHITE);
+                    }
+                    showQuestion(questionshow);
                 }
             }
         });
-        showQuestion(index);
+        showQuestion(questionshow);
     }
 
     @Override
@@ -151,17 +196,15 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
         if(extra != null){
             difficultylevel = extra.getInt("Difficulty");
         }
-
         if (difficultylevel==4){
             lives=3;
         }
-
         switch (v.getId()) {
-
             case R.id.btnAnswerA: {
                 btnA.setTextColor(Color.BLACK);
                 btnB.setTextColor(Color.WHITE);
                 btnC.setTextColor(Color.WHITE);
+                optionselected[questionshow]=1;
                 btnD.setTextColor(Color.WHITE);
                 ClickedButton_txt = (String) btnA.getText();
                 break;
@@ -170,6 +213,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 btnB.setTextColor(Color.BLACK);
                 btnA.setTextColor(Color.WHITE);
                 btnC.setTextColor(Color.WHITE);
+                optionselected[questionshow]=2;
                 btnD.setTextColor(Color.WHITE);
                 ClickedButton_txt = (String) btnB.getText();
                 break;
@@ -178,6 +222,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 btnC.setTextColor(Color.BLACK);
                 btnB.setTextColor(Color.WHITE);
                 btnA.setTextColor(Color.WHITE);
+                optionselected[questionshow]=3;
                 btnD.setTextColor(Color.WHITE);
                 ClickedButton_txt = (String) btnC.getText();
                 break;
@@ -187,6 +232,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 btnB.setTextColor(Color.WHITE);
                 btnC.setTextColor(Color.WHITE);
                 btnA.setTextColor(Color.WHITE);
+                optionselected[questionshow]=4;
                 ClickedButton_txt = (String) btnD.getText();
                 break;
             }
@@ -198,39 +244,82 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 btnB.setTextColor(Color.WHITE);
                 btnC.setTextColor(Color.WHITE);
                 btnA.setTextColor(Color.WHITE);
-                questionattempted[questionshow]=true;
                     if (ClickedButton_txt != null) {
                         ChangingAttempts(ClickedButton_txt, questionshow);
                         if (ClickedButton_txt.equals(Common.questionList.get(questionshow).getCorrectAnswer())) {
-                            score = score + 10;
-                            correctAnswer = correctAnswer + 1;
+                            if (!answermarkedcorrect[questionshow]) {
+                                score = score + 10;
+                                correctAnswer = correctAnswer + 1;
+                            }
                             index=questionshow;
                             index = index + 1;
                             ClickedButton_txt=null;
+                            answermarkedcorrect[questionshow]=true;
                             showQuestion(index);
                         } else {
                             if (difficultylevel==4)
                             lives = lives - 1;
+                            if (answermarkedcorrect[questionshow]){
+                                score = score - 10;
+                                correctAnswer = correctAnswer - 1;
+                                answermarkedcorrect[questionshow]=false;
+                            }
                             index=questionshow;
                             index = index + 1;
                             ClickedButton_txt=null;
                             showQuestion(index);
                         }
                     } else {
-                        Toast.makeText(Playing.this, "Select a option", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Playing.this, "Select an option", Toast.LENGTH_SHORT).show();
                     }
-
                 break;
             }
-
         }
     }
 
     private void showQuestion(int now) {
         questionshow=now;
-        if(now < totalQuestion&&lives>=0){
-            progressBar.setProgress(now*100/totalQuestion);
 
+        if (now==totalQuestion-1)
+            next.setVisibility(View.GONE);
+        if (now==0)
+            previous.setVisibility(View.GONE);
+        else if(now!=0&&now!=totalQuestion-1){
+            next.setVisibility(View.VISIBLE);
+            previous.setVisibility(View.VISIBLE);
+        }
+        if(now < totalQuestion&&lives>=0){
+            if (optionselected[questionshow]==0){
+                btnB.setTextColor(Color.WHITE);
+                btnA.setTextColor(Color.WHITE);
+                btnC.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==1){
+                btnB.setTextColor(Color.WHITE);
+                btnA.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==2){
+                btnA.setTextColor(Color.WHITE);
+                btnB.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==3){
+                btnB.setTextColor(Color.WHITE);
+                btnC.setTextColor(Color.BLACK);
+                btnA.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==4){
+                btnB.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnA.setTextColor(Color.WHITE);
+            }
+            progressBar.setProgress(now*100/totalQuestion);
             if(Common.questionList.get(now).getIsImageQuestion().equals("true")){
                 Picasso.with(getBaseContext()).load(Common.questionList.get(now).getQuestion()).into(question_image);
                 question_image.setVisibility(View.VISIBLE);
@@ -245,30 +334,40 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
             btnB.setText(Common.questionList.get(now).getAnswerB());
             btnC.setText(Common.questionList.get(now).getAnswerC());
             btnD.setText(Common.questionList.get(now).getAnswerD());
-
         }
-        else if(now >= totalQuestion&&lives>=0&&!allQuestionAttempted) {
-            for (int counter = 0; counter < totalQuestion-1; counter++) {
-              if (!questionattempted[counter]){
-                    questionshow=counter;
-                    index=questionshow;
-                    showQuestion(counter);
-                }
-                if (questionattempted[counter]&&counter==totalQuestion-2){
-                    allQuestionAttempted = true;
-                    Intent intent = new Intent(this,Done.class);
-                    Bundle dataSend = new Bundle();
-                    dataSend.putInt("Score",score);
-                    dataSend.putInt("Total",totalQuestion);
-                    dataSend.putInt("Correct",correctAnswer);
-                    intent.putExtras(dataSend);
-                    startActivity(intent);
-                    finish();
-                }
+
+        else if (now==totalQuestion){
+            Toast.makeText(Playing.this,"Make sure to complete the quiz and press done quiz",Toast.LENGTH_SHORT).show();
+            questionshow=questionshow-1;
+            next.setVisibility(View.GONE);
+            if (optionselected[questionshow]==1){
+                btnB.setTextColor(Color.WHITE);
+                btnA.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==2){
+                btnA.setTextColor(Color.WHITE);
+                btnB.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==3){
+                btnB.setTextColor(Color.WHITE);
+                btnC.setTextColor(Color.BLACK);
+                btnA.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.WHITE);
+            }
+            else if (optionselected[questionshow]==4){
+                btnB.setTextColor(Color.WHITE);
+                btnD.setTextColor(Color.BLACK);
+                btnC.setTextColor(Color.WHITE);
+                btnA.setTextColor(Color.WHITE);
             }
         }
-        else{
-            Intent intent = new Intent(this,Done.class);
+
+        else if (lives<0){
+            Intent intent = new Intent(Playing.this,Done.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("Score",score);
             dataSend.putInt("Total",totalQuestion);
@@ -277,7 +376,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
             startActivity(intent);
             finish();
         }
-
     }
 
     private void ChangingAttempts(String clickedButton_txt ,int index) {

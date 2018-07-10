@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/closetoblack"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:src="@drawable/simplepic" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/colorWhite"
+        android:text="Below the options you will see a submit button which has to be pressed only when you have selected an option and want to submit it as your final answer.There are two more buttons one to the left and the other to the right of submit button which help you navigate to the quiz."/>
+</LinearLayout>

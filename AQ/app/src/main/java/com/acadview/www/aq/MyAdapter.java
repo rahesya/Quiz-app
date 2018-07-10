@@ -47,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 Common.categoryName="PHP";
             }
             else if(Common.categoryId.equals("04")){
-                Common.categoryName="C";
+                Common.categoryName="Android";
             }
             v.getContext().startActivity(intent);
         }

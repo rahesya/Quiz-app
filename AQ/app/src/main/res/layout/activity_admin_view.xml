@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Use DrawerLayout as root container for activity -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
@@ -63,7 +62,7 @@
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:background="@color/colorWhite"
+        android:background="@color/closetoblack"
         android:layout_width="wrap_content"
         android:layout_gravity="start"
         android:layout_height="match_parent"
@@ -88,13 +87,13 @@
                 android:text="name"
                 android:textStyle="bold"
                 android:textAllCaps="true"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorWhite"
                 android:paddingBottom="5dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/closetoblack"/>
+                android:background="@color/colorWhite"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -102,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="Home"
                 android:paddingLeft="5dp"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorWhite"
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:textSize="15sp"/>
@@ -114,7 +113,7 @@
                 android:text="Settings"
                 android:paddingLeft="5dp"
                 android:id="@+id/adminsettings"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorWhite"
                 android:onClick="onSettings"
                 android:textAllCaps="true"
                 android:textStyle="bold"
@@ -127,7 +126,7 @@
                 android:id="@+id/admin_logout"
                 android:paddingLeft="5dp"
                 android:text="Logout"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorWhite"
                 android:textAllCaps="true"
                 android:onClick="onlogout"
                 android:textStyle="bold"

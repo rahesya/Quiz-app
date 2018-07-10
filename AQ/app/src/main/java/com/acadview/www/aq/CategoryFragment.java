@@ -37,11 +37,14 @@ public class CategoryFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        myFragment =inflater.inflate(R.layout.fragment_category,container,false);
 
-        listCategory = (RecyclerView)myFragment.findViewById(R.id.categorylist);
+        listCategory = myFragment.findViewById(R.id.categorylist);
         ItemData itemdatas[]= {new ItemData("Java",R.drawable.ic_java_icon)
                 ,new ItemData("Python",R.drawable.ic_python_icon)
                 ,new ItemData("PHP",R.drawable.ic_php_icon)
-                ,new ItemData("C",R.drawable.ic_android_icon)};
+                ,new ItemData("Android",R.drawable.ic_android_icon)
+                ,new ItemData("Coming Soon",R.drawable.ic_objectivec_logo)
+                ,new ItemData("Coming Soon",R.drawable.ic_machine_learning)
+                ,new ItemData("Coming Soon",R.drawable.ic_java_script)};
         listCategory.setLayoutManager(new GridLayoutManager(getContext(),2));
         MyAdapter myAdapter =new MyAdapter(itemdatas);
         listCategory.setAdapter(myAdapter);

@@ -28,6 +28,7 @@ public class Catalog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_catalog);
         Toolbar toolbar = findViewById(R.id.catalogtoolbar);
         setSupportActionBar(toolbar);
@@ -119,6 +120,11 @@ public class Catalog extends AppCompatActivity {
             }
             case R.id.myprofile:{
                 Intent profile= new Intent(Catalog.this,MyProfile.class);
+                startActivity(profile);
+                break;
+            }
+            case R.id.HowtoPlay:{
+                Intent profile= new Intent(Catalog.this,HowToPlay.class);
                 startActivity(profile);
                 break;
             }

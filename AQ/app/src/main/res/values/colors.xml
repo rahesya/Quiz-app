@@ -5,24 +5,39 @@
     <color name="colorBackground">#3797CF</color>
     <color name="colorWhite">#fcfcfc</color>
     <color name="blackish_blue">#0e0d1e</color>
-    <!--<color name="selected_colour">#3dbaef</color>-->
-    <!--<color name="wrong_ans">#f92302</color>-->
-    <!--<color name="correct_ans">#06f70a</color>-->
-    <!--<color name="colormstblue">#49BEFF</color>-->
-    <!--<color name="colorPrimaryDark">#65DCE5</color>-->
     <color name="colorAccent">#0D5D98</color>
     <color name="closetoblack">#1a1919</color>
 
-    <!--<color name="address">#2F7092</color>-->
-    <!--<color name="followers">#0D5D98</color>-->
-    <!--<color name="headings">#3797CF</color>-->
-    <!--<color name="solidCircle">#AAFFFFFF</color>-->
-    <!--<color name="circleBorder">#50FFFFFF</color>-->
-    <!--<color name="gradEnd">#67EFC8</color>-->
-    <!--<color name="followersBg">#65DCE5</color>-->
-    <!--<color name="followingBg">#49BEFF</color>-->
-    <!--<color name="Congrats">#f7d041</color>-->
-    <!--<color name="gradStart">#19AA8B</color>-->
-    <!--<color name="gradStop">#23A7D8</color>-->
-    <!--<color name="white">#FFFFFF</color>-->
+    <!-- Screens background color-->
+    <color name="bg_screen1">#fcfcfc</color>
+    <color name="bg_screen2">#fcfcfc</color>
+    <color name="bg_screen3">#fcfcfc</color>
+    <color name="bg_screen4">#fcfcfc</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#fcfcfc</color>
+    <color name="dot_dark_screen2">#fcfcfc</color>
+    <color name="dot_dark_screen3">#fcfcfc</color>
+    <color name="dot_dark_screen4">#fcfcfc</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#fcfcfc</color>
+    <color name="dot_light_screen2">#fcfcfc</color>
+    <color name="dot_light_screen3">#fcfcfc</color>
+    <color name="dot_light_screen4">#fcfcfc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
 </resources>

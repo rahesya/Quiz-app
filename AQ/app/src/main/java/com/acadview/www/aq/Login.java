@@ -131,9 +131,6 @@ public class Login extends Activity {
         userdetails = getSharedPreferences("Users_info", Context.MODE_PRIVATE);
         admindetails = getSharedPreferences("Admins_info",Context.MODE_PRIVATE);
 
-//        setsharedpreference("sound","false",userdetails);
-//        setsharedpreference("sound","fasle",admindetails);
-
         Bundle extra=getIntent().getExtras();
         if(extra != null){
             logout = extra.getInt("Logout");
@@ -171,8 +168,10 @@ public class Login extends Activity {
                 if (Login.getsharedpreference(Euname.getText().toString(),Login.userdetails)=="true"){
                     submitmedia.start();
                 }
-                setsharedpreference(Uname,Euname.getText().toString(),userdetails);
-                setsharedpreference(Pword,Epaswd.getText().toString(),userdetails);
+                if (!Euname.getText().toString().isEmpty()||!Epaswd.getText().toString().isEmpty()) {
+                    setsharedpreference(Uname, Euname.getText().toString(), userdetails);
+                    setsharedpreference(Pword, Epaswd.getText().toString(), userdetails);
+                }
 
                 findViewById(R.id.pbar).setVisibility(View.VISIBLE);
                 signIn(Epaswd.getText().toString(), Euname.getText().toString());
@@ -184,9 +183,10 @@ public class Login extends Activity {
             public void onClick(View v) {
                 if (Login.getsharedpreference(Euname.getText().toString(),admindetails)=="true")
                     submitmedia.start();
-
-                setsharedpreference(Uname,Euname.getText().toString(),admindetails);
-                setsharedpreference(Pword,Epaswd.getText().toString(),admindetails);
+                if (!Euname.getText().toString().isEmpty()||!Epaswd.getText().toString().isEmpty()) {
+                    setsharedpreference(Uname, Euname.getText().toString(), admindetails);
+                    setsharedpreference(Pword, Epaswd.getText().toString(), admindetails);
+                }
 
                 findViewById(R.id.pbar).setVisibility(View.VISIBLE);
                 adminsignin(Euname.getText().toString(),Epaswd.getText().toString());
@@ -199,7 +199,7 @@ public class Login extends Activity {
         admin.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (username!=null){
+                if (!username.isEmpty()){
                     if (dataSnapshot.child(username).exists()){
                         final Admin newadmin = dataSnapshot.child(username).getValue(Admin.class);
                         if (newadmin.getPassword().equals(password)) {

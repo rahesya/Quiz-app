@@ -124,4 +124,12 @@ public class Done extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        submitmedia.stop();
+        Intent intent = new Intent(Done.this,Catalog.class);
+        startActivity(intent);
+        finish();
+    }
 }

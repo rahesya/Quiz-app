@@ -16,11 +16,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,17 +31,13 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.util.TreeMap;
-import java.util.UUID;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyProfile extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView backimage;
     private CircleImageView profileimage;
-    TextView totalscore,correctattempts,totalattempts,user_name,java_score,python_score,php_score,c_score,phone_number;
+    TextView totalscore,correctattempts,totalattempts,user_name,java_score,python_score,php_score,android_score,phone_number;
 
     private Uri filepath;
     private final int PICK_IMAGE_REQUEST = 71;
@@ -65,18 +56,18 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
         defaultimages = FirebaseDatabase.getInstance().getReference("DefaultImages");
         scoretbl = FirebaseDatabase.getInstance().getReference("Scores/"+Common.currentuser.getUsername());
 
-        java_score=(TextView)findViewById(R.id.javascore);
-        phone_number=(TextView)findViewById(R.id.user_phonenumber);
-        python_score=(TextView)findViewById(R.id.pythonscore);
-        php_score=(TextView)findViewById(R.id.phpscore);
-        c_score =(TextView)findViewById(R.id.cscore);
+        java_score=findViewById(R.id.javascore);
+        phone_number=findViewById(R.id.user_phonenumber);
+        python_score=findViewById(R.id.pythonscore);
+        php_score=findViewById(R.id.phpscore);
+        android_score =findViewById(R.id.androidscore);
 
-        backimage = (ImageView)findViewById(R.id.header_cover_image);
-        profileimage=(CircleImageView) findViewById(R.id.user_profile_photo);
-        totalattempts=(TextView)findViewById(R.id.questionsattempted);
-        correctattempts=(TextView)findViewById(R.id.correctattempts);
-        totalscore=(TextView)findViewById(R.id.totalscore);
-        user_name =(TextView)findViewById(R.id.user_profile_name);
+        backimage = findViewById(R.id.header_cover_image);
+        profileimage=findViewById(R.id.user_profile_photo);
+        totalattempts=findViewById(R.id.questionsattempted);
+        correctattempts=findViewById(R.id.correctattempts);
+        totalscore=findViewById(R.id.totalscore);
+        user_name =findViewById(R.id.user_profile_name);
 
         backimage.setOnClickListener(this);
         profileimage.setOnClickListener(this);
@@ -116,8 +107,8 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
                 python_score.setText(dataSnapshot.child("Python").child("score").getValue().toString());
                 if(dataSnapshot.child("PHP").exists())
                 php_score.setText(dataSnapshot.child("PHP").child("score").getValue().toString());
-                if(dataSnapshot.child("C").exists())
-                c_score.setText(dataSnapshot.child("C").child("score").getValue().toString());
+                if(dataSnapshot.child("Android").exists())
+                android_score.setText(dataSnapshot.child("Android").child("score").getValue().toString());
 
             }
 

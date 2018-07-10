@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/action_category"
-        tools:ignore="MenuTitle"
+        android:title="Quiz Category"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:icon="@drawable/category_icon">
@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/action_Ranking"
-        tools:ignore="MenuTitle"
+        android:title="Students Ranking"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ranking_icon">
